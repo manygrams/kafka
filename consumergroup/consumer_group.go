@@ -289,9 +289,9 @@ func (cg *ConsumerGroup) Claims() []int32 {
 
 // Close closes the consumer group
 func (cg *ConsumerGroup) Close() error {
-	cg.zoo.Close()
 	close(cg.stopper)
 	cg.wg.Wait()
+	cg.zoo.Close()
 	return nil
 }
 
